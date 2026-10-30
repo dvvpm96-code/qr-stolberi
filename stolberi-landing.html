@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>СтолБери — Стол Эйдж 60</title>
+<style>
+:root{--bg:#f1eee6;--card:#fbfaf6;--ink:#262622;--mut:#76736a;--g:#3d4a3b;--gt:#fff;--line:#e2ddcf;--ok:#3f7a46;--warn:#b8742a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a17;--card:#242420;--ink:#efece3;--mut:#a09d92;--g:#8fa58b;--gt:#14140f;--line:#37362f;--ok:#7fc088;--warn:#e0a55d}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Manrope","Segoe UI",system-ui,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:0 16px 40px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+h1{font-size:44px}h2{font-size:30px;margin:44px 0 6px}h3{font-size:21px}
+.sub{color:var(--mut);margin:0 0 16px;font-size:14px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-family:Georgia,serif;font-size:22px;font-weight:600}
+.pt{font:12px/1.3 system-ui,sans-serif;color:var(--mut);text-align:right}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;overflow:hidden}
+.hero svg{width:100%;height:auto;display:block;background:linear-gradient(#e9e2d2,#d9cdb5);border-radius:14px}
+.price{font-size:34px;font-weight:700;margin:12px 0 2px}.price small{font-size:14px;color:var(--mut);font-weight:500}
+.lbl{font-weight:600;margin:18px 0 8px;font-size:15px;display:flex;justify-content:space-between}.lbl span{color:var(--mut);font-weight:500}
+.chips,.sw{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--g);color:var(--gt);border-color:var(--g)}
+.sw button{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0;box-shadow:inset 0 0 0 3px var(--card)}
+.sw button[aria-pressed=true]{outline:2px solid var(--g);outline-offset:2px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.bases{display:grid;gap:8px}
+.base{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:14px;padding:10px;font:inherit;cursor:pointer}
+.base[aria-pressed=true]{border-color:var(--g);background:color-mix(in srgb,var(--g) 10%,transparent)}
+.base svg{width:84px;flex:none;background:var(--bg);border-radius:8px}.base b{display:block;font-size:15px}.base small{color:var(--mut);font-size:13px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st div{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--mut)}.st b{display:block;font-size:17px;color:var(--ink)}
+.ok{color:var(--ok)!important}.warn{color:var(--warn)!important}
+.src{font-size:12px;color:var(--mut);margin-top:8px}
+dl{margin:0}dl div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}dl div:last-child{border:0}dt{color:var(--mut)}dd{margin:0;text-align:right}
+.cta{display:block;width:100%;border:0;border-radius:999px;background:var(--g);color:var(--gt);padding:15px;font:600 16px inherit;font-family:inherit;margin-top:10px;cursor:pointer}
+.cta.o{background:transparent;color:var(--ink);border:1px solid var(--g)}
+.row{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.c{flex:0 0 170px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px}
+.c svg{width:100%;height:auto;background:var(--bg);border-radius:10px;display:block}
+.c b{display:block;margin-top:8px;font-size:14px}.c small{color:var(--mut);font-size:12px;display:block}.c .p{font-weight:700;margin-top:4px}
+.tag{display:inline-block;font-size:11px;border-radius:999px;padding:2px 8px;background:var(--bg);color:var(--mut);margin-top:6px}
+.tag.g{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.ch{flex-basis:150px}
+.set{display:flex;justify-content:space-between;align-items:center;gap:10px}.set s{color:var(--mut);font-size:14px;margin-left:6px}
+.foot{margin-top:36px;font-size:12px;color:var(--mut);text-align:center}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--g);color:var(--gt);padding:12px 18px;border-radius:12px;font-size:14px;display:none;max-width:90%}
+</style></head><body><div class="w">
+<div class="top"><span>СтолБери</span><span class="pt">Вы смотрите модель<br>в магазине: <b id="point"></b></span></div>
+
+<section class="hero"><div id="hero"></div>
+<h1>Стол Эйдж 60</h1>
+<p class="sub" id="desc"></p>
+<div class="price" id="price"></div>
+<div class="sub" id="cfgline"></div></section>
+
+<h2>Соберите свой стол</h2><p class="sub">Размер, столешница и подстолье — цена и наличие обновятся сразу.</p>
+<div class="box">
+<div class="lbl">Размер<span id="sizeNote"></span></div><div class="chips" id="sizes"></div>
+<div class="lbl">Столешница<span id="topName"></span></div><div class="sw" id="tops"></div>
+<div class="lbl">Подстолье<span id="baseName"></span></div><div class="bases" id="bases"></div>
+<div class="lbl">Цвет подстолья<span id="bcName"></span></div><div class="sw" id="bcs"></div>
+</div>
+
+<h2>Наличие и сроки</h2><p class="sub">Для выбранной комплектации.</p>
+<div class="box"><div class="st" id="stock"></div><div class="src" id="src"></div></div>
+
+<h2>Доставка и сборка</h2><p class="sub">Условия действуют для вашего города.</p>
+<div class="box"><dl id="terms"></dl></div>
+<button class="cta" id="buy">Оформить заказ</button>
+<button class="cta o" id="ask">Уточнить наличие в магазине</button>
+
+<h2>Похожие модели</h2><p class="sub">Тот же стиль в другой цене.</p><div class="row" id="sim"></div>
+
+<h2>Стулья к этому столу</h2><p class="sub">Пять вариантов, которые подходят лучше всего к выбранной столешнице.</p><div class="row" id="chairs"></div>
+<div class="box"><div class="set"><div><h3>Стол + 4 стула</h3><div id="setp"></div></div><button class="chip" id="setb" style="background:var(--g);color:var(--gt)">Собрать комплект</button></div></div>
+
+<div class="foot">СтолБери · столы и стулья для вашего дома<br>Страница открыта по QR-коду: модель <span id="sku"></span></div>
+</div><div id="toast" role="status"></div>
+<script>
+/* ===== ДАННЫЕ (заменяются данными из 1С) ===== */
+const MODEL={sku:'EDGE-60',desc:'Массив дуба и керамика · современный стиль. Три подстолья, шесть столешниц, гарантия 2 года.',
+ sizes:[{n:'120×80',p:22900,seats:'4'},{n:'140×90',p:24500,seats:'4–6'},{n:'160×90',p:26430,seats:'4–6'},{n:'180×90',p:29800,seats:'6–8'}],
+ tops:[{id:'oak',n:'Натуральный дуб',m:'массив дуба',c:'#d6a566',a:0},{id:'stain',n:'Морёный дуб',m:'массив дуба',c:'#5a4230',a:900},{id:'nut',n:'Орех',m:'массив ореха',c:'#92582f',a:3200},{id:'wenge',n:'Венге',m:'шпон венге',c:'#2e2019',a:1200},{id:'ash',n:'Ясень светлый',m:'массив ясеня',c:'#e5cfa4',a:0},{id:'cer',n:'Серая керамика',m:'керамика на МДФ',c:'#9b9d9c',a:6500}],
+ bases:[{id:'classic',n:'Классик',m:'дерево',d:'Четыре конические ножки из дуба',a:0,cols:[['Дуб','#c99a5c'],['Венге','#2e2019'],['Белый','#ece8de']]},
+        {id:'trestle',n:'Эйдж',m:'дерево',d:'Два А-образных опорных щита, перекладина',a:2500,cols:[['Дуб','#c99a5c'],['Орех','#92582f']]},
+        {id:'loft',n:'Лофт',m:'металл',d:'Стальная рама, порошковая окраска',a:1800,cols:[['Чёрный','#1d1d1d'],['Графит','#4a4d50'],['Белый','#e8e8e4'],['Бронза','#8a6a3b']]}]};
+const SIM=[{n:'Эйдж 50',p:24990,t:'#d6a566',b:'classic',tag:'Дешевле'},{n:'Лайт',p:22900,t:'#e5cfa4',b:'trestle',tag:'Дешевле'},{n:'Эйдж 70',p:34900,t:'#92582f',b:'trestle',tag:'Похожая цена'},{n:'Флоренс',p:34900,t:'#9b9d9c',b:'loft',tag:'Премиум'}];
+const CHAIRS=[{n:'Флоренс',f:'ткань, бежевый',p:7900,c:'#cdbfa8',m:97},{n:'Грейс',f:'ткань, оливковый',p:8350,c:'#7f8a5a',m:94},{n:'Лофт',f:'ткань, графит',p:9200,c:'#6a6c6b',m:92},{n:'Форио',f:'велюр, молочный',p:8800,c:'#e8e1d3',m:90},{n:'Гранд',f:'ткань, терракот',p:8350,c:'#b5714f',m:86}];
+const POINT='ТЦ «Мега», точка №12';
+/* ===== АДАПТЕР 1С: на боевом сайте укажите URL HTTP-сервиса 1С.
+   Ответ: {store:n, warehouse:n, days:n, price:n}. Без URL работает демо-заглушка. ===== */
+const ONEC_URL=null;
+async function loadStock(cfg){
+ if(ONEC_URL){try{const r=await fetch(ONEC_URL+'?'+new URLSearchParams(cfg));return {...await r.json(),demo:false}}catch(e){}}
+ const h=[...JSON.stringify(cfg)].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+ return {store:h%4,warehouse:2+h%14,days:1+h%5,demo:true};
+}
+/* ===== РИСУНКИ ===== */
+function table(top,base,col,w=400){
+ const t=`<polygon points="70,80 330,80 378,118 22,118" fill="${top}"/><polygon points="70,80 330,80 378,118 22,118" fill="#fff" opacity=".14"/><rect x="22" y="118" width="356" height="13" fill="${top}"/><rect x="22" y="118" width="356" height="13" fill="#000" opacity=".28"/>`;
+ let l='';
+ if(base=='classic')l=`<polygon points="98,124 110,124 106,185 100,185" fill="${col}" opacity=".7"/><polygon points="290,124 302,124 300,185 294,185" fill="${col}" opacity=".7"/><polygon points="40,131 62,131 56,225 48,225" fill="${col}"/><polygon points="338,131 360,131 352,225 344,225" fill="${col}"/>`;
+ else if(base=='trestle')l=`<polygon points="55,131 85,131 100,225 30,225" fill="${col}"/><polygon points="315,131 345,131 370,225 300,225" fill="${col}"/><rect x="85" y="165" width="230" height="10" fill="${col}" opacity=".8"/>`;
+ else l=`<rect x="34" y="131" width="332" height="8" fill="${col}"/><rect x="38" y="139" width="8" height="86" fill="${col}"/><rect x="354" y="139" width="8" height="86" fill="${col}"/><rect x="100" y="139" width="6" height="52" fill="${col}" opacity=".6"/><rect x="294" y="139" width="6" height="52" fill="${col}" opacity=".6"/>`;
+ return `<svg viewBox="0 0 400 240" role="img" aria-label="Стол"><ellipse cx="200" cy="228" rx="170" ry="7" fill="#000" opacity=".12"/>${l}${t}</svg>`;
+}
+const chair=c=>`<svg viewBox="0 0 160 170"><ellipse cx="80" cy="160" rx="50" ry="5" fill="#000" opacity=".12"/><rect x="42" y="14" width="76" height="70" rx="22" fill="${c}"/><rect x="38" y="82" width="84" height="20" rx="8" fill="${c}"/><rect x="38" y="82" width="84" height="20" rx="8" fill="#000" opacity=".1"/><path d="M48 102 L40 156 M112 102 L120 156 M62 102 L58 150 M98 102 L102 150" stroke="#2a2a26" stroke-width="5" stroke-linecap="round"/></svg>`;
+const rub=n=>n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' ₽';
+const $=id=>document.getElementById(id);
+const S={s:2,t:0,b:0,c:0};let tm;
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(tm);tm=setTimeout(()=>e.style.display='none',3200)}
+function sw(id,items,sel,fn){$(id).innerHTML=items.map((x,i)=>`<button aria-pressed="${i==sel}" aria-label="${x[0]}" title="${x[0]}" style="background:${x[1]}" data-i="${i}"></button>`).join('');$(id).onclick=e=>{const b=e.target.closest('button');if(b)fn(+b.dataset.i)}}
+function price(){const m=MODEL;return m.sizes[S.s].p+m.tops[S.t].a+m.bases[S.b].a}
+async function render(){
+ const m=MODEL,sz=m.sizes[S.s],tp=m.tops[S.t],bs=m.bases[S.b],bc=bs.cols[S.c];
+ $('hero').innerHTML=table(tp.c,bs.id,bc[1]);
+ $('price').innerHTML=`от ${rub(price())}`;
+ $('cfgline').textContent=`${sz.n} см · ${tp.n} · подстолье ${bs.n}, ${bc[0].toLowerCase()}`;
+ $('sizes').innerHTML=m.sizes.map((x,i)=>`<button class="chip" aria-pressed="${i==S.s}" data-i="${i}">${x.n}</button>`).join('');
+ $('sizes').onclick=e=>{const b=e.target.closest('button');if(b){S.s=+b.dataset.i;render()}};
+ $('sizeNote').textContent=`на ${sz.seats} человек`;
+ sw('tops',m.tops.map(x=>[x.n,x.c]),S.t,i=>{S.t=i;render()});
+ $('topName').textContent=`${tp.n}, ${tp.m}`+(tp.a?` · +${rub(tp.a)}`:'');
+ $('bases').innerHTML=m.bases.map((x,i)=>`<button class="base" aria-pressed="${i==S.b}" data-i="${i}">${table(tp.c,x.id,x.cols[0][1])}<span><b>${x.n} · ${x.m}</b><small>${x.d}${x.a?` · +${rub(x.a)}`:''}</small></span></button>`).join('');
+ $('bases').onclick=e=>{const b=e.target.closest('button');if(b){S.b=+b.dataset.i;S.c=0;render()}};
+ $('baseName').textContent=bs.m;
+ sw('bcs',bs.cols,S.c,i=>{S.c=i;render()});$('bcName').textContent=bc[0];
+ // сравнения и стулья
+ $('sim').innerHTML=SIM.map(x=>`<div class="c">${table(x.t,x.b,x.b=='loft'?'#1d1d1d':'#c99a5c')}<b>${x.n}</b><small>160×90 · ${x.tag=='Премиум'?'керамика':'дуб'}</small><div class="p">от ${rub(x.p)}</div><span class="tag ${x.tag=='Дешевле'?'g':''}">${x.tag}</span></div>`).join('');
+ $('chairs').innerHTML=CHAIRS.map(x=>`<div class="c ch">${chair(x.c)}<b>${x.n}</b><small>${x.f}</small><div class="p">${rub(x.p)}</div><span class="tag g">Подходит на ${x.m}%</span></div>`).join('');
+ const full=price()+4*CHAIRS[0].p;$('setp').innerHTML=`${rub(Math.round(full*.9))} <s>${rub(full)}</s>`;
+ $('sku').textContent=m.sku;$('point').textContent=POINT;$('desc').textContent=m.desc;
+ // 1С
+ $('stock').innerHTML='<div>Загружаем остатки…</div>';
+ const cfg={sku:m.sku,size:sz.n,top:tp.id,base:bs.id,color:bc[0]};
+ const st=await loadStock(cfg);if(JSON.stringify(cfg)!=JSON.stringify({sku:m.sku,size:MODEL.sizes[S.s].n,top:MODEL.tops[S.t].id,base:MODEL.bases[S.b].id,color:MODEL.bases[S.b].cols[S.c][0]}))return;
+ const ds=st.store>0?'сегодня':`${st.days} дн.`;
+ $('stock').innerHTML=`<div>В магазине<b class="${st.store?'ok':'warn'}">${st.store?st.store+' шт.':'нет на витрине'}</b></div><div>На складе<b class="${st.warehouse?'ok':'warn'}">${st.warehouse} шт.</b></div><div>Получить<b>${st.store?'сегодня в магазине':'через '+ds}</b></div><div>Доставка<b>${st.store?'от 1 дня':'от '+(st.days+1)+' дн.'}</b></div>`;
+ $('src').textContent=st.demo?'Демо-данные. Подключение к 1С — через адрес сервиса ONEC_URL.':'Остатки получены из 1С только что.';
+ $('terms').innerHTML=`<div><dt>Доставка по городу</dt><dd>1 500 ₽, бесплатно от 50 000 ₽</dd></div><div><dt>В другой город</dt><dd>по тарифу ТК, рассчитаем при заказе</dd></div><div><dt>Окно доставки</dt><dd>2 часа, звоним за час</dd></div><div><dt>Подъём на этаж</dt><dd>150 ₽ за этаж без лифта</dd></div><div><dt>Сборка</dt><dd>от 2 500 ₽, 1–2 часа</dd></div><div><dt>Условия сборки</dt><dd>в день доставки или на следующий день, гарантия на сборку 1 год</dd></div>`;
+}
+$('buy').onclick=()=>toast('Заказ оформляется в 1С: передаём комплектацию '+MODEL.sku);
+$('ask').onclick=()=>toast('Консультант магазина получил ваш запрос');
+$('setb').onclick=()=>toast('Комплект добавлен в расчёт');
+render();
+</script></body></html>
