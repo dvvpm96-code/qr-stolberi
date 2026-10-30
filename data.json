@@ -1,0 +1,286 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-28T23:29:31+03:00",
+  "source": "1c",
+  "currency": "RUB",
+  "model": {
+    "sku": "EDGE-60",
+    "name": "Стол Эйдж 60",
+    "desc": "Массив дуба и керамика · спокойная геометрия для дома. Три подстолья, шесть столешниц, гарантия 2 года.",
+    "sizes": [
+      {
+        "id": "120x80",
+        "name": "120×80",
+        "price": 22900,
+        "seats": "4",
+        "stock": {
+          "store": 1,
+          "warehouse": 2
+        }
+      },
+      {
+        "id": "140x90",
+        "name": "140×90",
+        "price": 24500,
+        "seats": "4–6",
+        "stock": {
+          "store": 1,
+          "warehouse": 2
+        }
+      },
+      {
+        "id": "160x90",
+        "name": "160×90",
+        "price": 26430,
+        "seats": "4–6",
+        "stock": {
+          "store": 1,
+          "warehouse": 3
+        }
+      },
+      {
+        "id": "180x90",
+        "name": "180×90",
+        "price": 29800,
+        "seats": "6–8",
+        "stock": {
+          "store": 1,
+          "warehouse": 2
+        }
+      }
+    ],
+    "tops": [
+      {
+        "id": "oak",
+        "name": "Натуральный дуб",
+        "surcharge": 0,
+        "material": "массив дуба",
+        "color": "#d6a566",
+        "stock": 1
+      },
+      {
+        "id": "stain",
+        "name": "Морёный дуб",
+        "surcharge": 900,
+        "material": "массив дуба",
+        "color": "#5a4230",
+        "stock": 1
+      },
+      {
+        "id": "nut",
+        "name": "Орех",
+        "surcharge": 3200,
+        "material": "массив ореха",
+        "color": "#92582f",
+        "stock": 2
+      },
+      {
+        "id": "wenge",
+        "name": "Венге",
+        "surcharge": 1200,
+        "material": "шпон венге",
+        "color": "#2e2019",
+        "stock": 1
+      },
+      {
+        "id": "ash",
+        "name": "Ясень светлый",
+        "surcharge": 0,
+        "material": "массив ясеня",
+        "color": "#e5cfa4",
+        "stock": 1
+      },
+      {
+        "id": "cer",
+        "name": "Серая керамика",
+        "surcharge": 6500,
+        "material": "керамика на МДФ",
+        "color": "#9b9d9c",
+        "stock": 1
+      }
+    ],
+    "bases": [
+      {
+        "id": "classic",
+        "name": "Классик",
+        "surcharge": 0,
+        "material": "дерево",
+        "desc": "Четыре конические ножки из дуба",
+        "colors": [
+          {
+            "id": "oak",
+            "name": "Дуб",
+            "hex": "#c99a5c",
+            "stock": 1
+          },
+          {
+            "id": "wenge",
+            "name": "Венге",
+            "hex": "#2e2019",
+            "stock": 1
+          },
+          {
+            "id": "white",
+            "name": "Белый",
+            "hex": "#ece8de",
+            "stock": 1
+          }
+        ]
+      },
+      {
+        "id": "trestle",
+        "name": "Эйдж",
+        "surcharge": 2500,
+        "material": "дерево",
+        "desc": "Два А-образных опорных щита, перекладина",
+        "colors": [
+          {
+            "id": "oak",
+            "name": "Дуб",
+            "hex": "#c99a5c",
+            "stock": 1
+          },
+          {
+            "id": "nut",
+            "name": "Орех",
+            "hex": "#92582f",
+            "stock": 1
+          }
+        ]
+      },
+      {
+        "id": "loft",
+        "name": "Лофт",
+        "surcharge": 1800,
+        "material": "металл",
+        "desc": "Стальная рама, порошковая окраска",
+        "colors": [
+          {
+            "id": "black",
+            "name": "Чёрный",
+            "hex": "#1d1d1d",
+            "stock": 2
+          },
+          {
+            "id": "graphite",
+            "name": "Графит",
+            "hex": "#4a4d50",
+            "stock": 1
+          },
+          {
+            "id": "white",
+            "name": "Белый",
+            "hex": "#e8e8e4",
+            "stock": 1
+          },
+          {
+            "id": "bronze",
+            "name": "Бронза",
+            "hex": "#8a6a3b",
+            "stock": 1
+          }
+        ]
+      }
+    ]
+  },
+  "similar": [
+    {
+      "id": "edge-50",
+      "name": "Эйдж 50",
+      "price": 24990,
+      "topColor": "#d6a566",
+      "baseId": "classic",
+      "tag": "Дешевле",
+      "size": "160×90"
+    },
+    {
+      "id": "light",
+      "name": "Лайт",
+      "price": 22900,
+      "topColor": "#e5cfa4",
+      "baseId": "trestle",
+      "tag": "Дешевле",
+      "size": "140×90"
+    },
+    {
+      "id": "edge-70",
+      "name": "Эйдж 70",
+      "price": 34900,
+      "topColor": "#92582f",
+      "baseId": "trestle",
+      "tag": "Похожая цена",
+      "size": "180×90"
+    },
+    {
+      "id": "florence",
+      "name": "Флоренс",
+      "price": 34900,
+      "topColor": "#9b9d9c",
+      "baseId": "loft",
+      "tag": "Премиум",
+      "size": "180×90"
+    }
+  ],
+  "chairs": [
+    {
+      "id": "florence-chair",
+      "name": "Флоренс",
+      "fabric": "ткань, бежевый",
+      "price": 7900,
+      "color": "#cdbfa8",
+      "match": 97
+    },
+    {
+      "id": "grace",
+      "name": "Грейс",
+      "fabric": "ткань, оливковый",
+      "price": 8350,
+      "color": "#7f8a5a",
+      "match": 94
+    },
+    {
+      "id": "loft-chair",
+      "name": "Лофт",
+      "fabric": "ткань, графит",
+      "price": 9200,
+      "color": "#6a6c6b",
+      "match": 92
+    },
+    {
+      "id": "forio",
+      "name": "Форио",
+      "fabric": "велюр, молочный",
+      "price": 8800,
+      "color": "#e8e1d3",
+      "match": 90
+    },
+    {
+      "id": "grand",
+      "name": "Гранд",
+      "fabric": "ткань, терракот",
+      "price": 8350,
+      "color": "#b5714f",
+      "match": 86
+    }
+  ],
+  "store": {
+    "name": "ТЦ «Мега», точка №12",
+    "city": "Санкт-Петербург",
+    "address": "Московский пр., 205 (ТЦ «Мега»), 1 этаж",
+    "hours": "10:00–22:00, без выходных",
+    "phone": ""
+  },
+  "terms": {
+    "deliveryCity": "1 500 ₽, бесплатно от 50 000 ₽",
+    "deliveryOther": "по тарифу ТК, рассчитаем при заказе",
+    "deliveryWindow": "2 часа, звоним за час",
+    "lift": "150 ₽ за этаж без лифта",
+    "assembly": "от 2 500 ₽, 1–2 часа",
+    "assemblyTerms": "в день доставки или на следующий день, гарантия на сборку 1 год"
+  },
+  "set": {
+    "chairs": 4,
+    "discount": 0.1,
+    "chairId": "florence-chair"
+  }
+}
