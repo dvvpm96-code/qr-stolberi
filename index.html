@@ -367,6 +367,20 @@ main { display: block; }
   place-items: center;
 }
 .hero-art svg { width: 100%; height: auto; border-radius: 10px; }
+.hero-art .hero-photo { width: 100%; max-height: 360px; object-fit: contain; border-radius: 10px; }
+.hero-gallery { display: flex; align-items: center; justify-content: center; gap: 14px; color: var(--mut); font-size: 13px; }
+.hero-gallery-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+.hero-gallery-btn:hover { border-color: var(--acc); color: var(--acc); }
 .hero-badge {
   position: absolute;
   top: 14px;
@@ -1728,6 +1742,19 @@ function normalizeChairs(raw, fallback) {
   return out.length ? out : clone(fallback.chairs);
 }
 
+function normalizeImages(raw, fallback) {
+  const items = Array.isArray(raw) ? raw : fallback;
+  const out = [];
+  for (const item of Array.isArray(items) ? items : []) {
+    if (typeof item !== 'string') continue;
+    const url = item.trim();
+    const isLocalImage = /^images\/[A-Za-z0-9][A-Za-z0-9._-]*\.(?:jpe?g|png|webp|avif)$/i.test(url);
+    const isHttpsImage = /^https:\/\/[^\s"'<>]+$/i.test(url);
+    if ((isLocalImage || isHttpsImage) && !out.includes(url)) out.push(url);
+  }
+  return out;
+}
+
 /**
  * Приводит ответ data.json к безопасной форме. Никогда не бросает исключение:
  * повреждённые поля заменяются значениями из fallback, битые позиции отбрасываются.
@@ -1743,9 +1770,11 @@ function normalizeData(raw, fallback) {
   const sizes = normalizeSizes(model.sizes, fallback);
   const tops = normalizeTops(model.tops, fallback);
   const bases = normalizeBases(model.bases, fallback);
+  const images = normalizeImages(model.images, fallback.model.images || []);
   if (!Array.isArray(model.sizes) || model.sizes.length !== sizes.length) warnings.push('часть размеров отброшена: нет цены или id');
   if (!Array.isArray(model.tops) || model.tops.length !== tops.length) warnings.push('часть столешниц отброшена: нет id');
   if (!Array.isArray(model.bases) || model.bases.length !== bases.length) warnings.push('часть подстолий отброшена: нет id или цветов');
+  if (Array.isArray(model.images) && model.images.length !== images.length) warnings.push('часть фотографий отброшена: неподдерживаемый путь или формат');
 
   const data = {
     schema: 1,
@@ -1756,6 +1785,7 @@ function normalizeData(raw, fallback) {
       sku: str(model.sku, fallback.model.sku),
       name: str(model.name, fallback.model.name),
       desc: str(model.desc, fallback.model.desc),
+      images,
       sizes,
       tops,
       bases
@@ -2013,6 +2043,7 @@ const state = {
   items: [],
   live: null,
   stockToken: 0,
+  heroImageIndex: 0,
   lastFocus: null,
   dataWarnings: [],
   loading: true
@@ -2354,6 +2385,27 @@ function renderBreakdown() {
 function renderHeroArt() {
   const { top, base, color } = selected();
   const hero = $('#heroArt');
+  const images = state.data.model.images;
+  if (images.length) {
+    state.heroImageIndex %= images.length;
+    const imageIndex = state.heroImageIndex;
+    const photoControls = images.length > 1
+      ? '<div class="hero-gallery" role="group" aria-label="Фотографии товара">' +
+        '<button class="hero-gallery-btn" type="button" data-action="hero-photo-previous" aria-label="Предыдущее фото">‹</button>' +
+        '<span>' + (imageIndex + 1) + ' / ' + images.length + '</span>' +
+        '<button class="hero-gallery-btn" type="button" data-action="hero-photo-next" aria-label="Следующее фото">›</button>' +
+        '</div>'
+      : '';
+    hero.innerHTML = '<img class="hero-photo" src="' + escapeHtml(images[imageIndex]) +
+      '" alt="' + escapeHtml('Стол ' + state.data.model.name + ', фото ' + (imageIndex + 1)) + '" decoding="async">' +
+      photoControls +
+      '<span class="hero-badge" id="heroBadge">' + (state.loading ? 'Проверяем наличие' : 'В наличии') + '</span>';
+    $('.hero-photo', hero).addEventListener('error', () => {
+      hero.innerHTML = tableSvg(top.color, base.id, color.hex, { label: 'Стол ' + state.data.model.name }) +
+        '<span class="hero-badge" id="heroBadge">' + (state.loading ? 'Проверяем наличие' : 'В наличии') + '</span>';
+    }, { once: true });
+    return;
+  }
   hero.innerHTML = tableSvg(top.color, base.id, color.hex, { label: 'Стол ' + state.data.model.name }) +
     '<span class="hero-badge" id="heroBadge">' + (state.loading ? 'Проверяем наличие' : 'В наличии') + '</span>';
 }
@@ -2893,6 +2945,14 @@ function bindStaticEvents() {
       case 'set-top': choose(id, 'top'); break;
       case 'set-base': choose(id, 'base'); break;
       case 'set-color': choose(id, 'color'); break;
+      case 'hero-photo-previous':
+        state.heroImageIndex = (state.heroImageIndex + state.data.model.images.length - 1) % state.data.model.images.length;
+        renderHeroArt();
+        break;
+      case 'hero-photo-next':
+        state.heroImageIndex = (state.heroImageIndex + 1) % state.data.model.images.length;
+        renderHeroArt();
+        break;
       case 'open-order': openOrder(); break;
       case 'open-ask': openAsk(); break;
       case 'open-store': openStore(); break;
